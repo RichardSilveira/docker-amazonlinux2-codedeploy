@@ -20,8 +20,6 @@ RUN yum -y install yarn
 # Installing the CodeDeploy Agent
 RUN yum -y install ruby
 
-WORKDIR /home
-
 RUN wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
 RUN chmod +x ./install
 RUN ./install auto

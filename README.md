@@ -21,7 +21,7 @@ On top of it, we have all `AWS CodeDeploy` stuff installed to you playing with i
 
 ### Preparing your container
 
-- Run a container in **privileged mode** with `docker run --name awscodedeploy -d --privileged awscodedeploy:latest`.
+- Run a container in **privileged mode** with `docker run --name awscodedeploy -d --privileged richardsilveira/amazonlinux2-codedeploy:latest`.
 - Go inside it with `docker exec -it awscodedeploy bash`
 - Start the CodeDeploy agent `service codedeploy-agent start`
 - Check the status of the agent through `service codedeploy-agent status` _(sometimes you'll need to exec `start` command above again)_
@@ -35,6 +35,6 @@ Go to your **app root directory** _(at same level of your `appspec.yml` file)_, 
 
 Now, **back to your running container** run `codedeploy-local --bundle-location <yourapp>.zip -t zip --deployment-group my-deployment-group`
 
-As soon the execution is done, some paths related to codedeploy will be showed at console, the most important one the path for the **log file**, you need to run `cat path/to/logfile` to check whats is going on with your deployment.
+As soon the execution is done, a message like this `See the deployment log at /opt/codedeploy-agent/deployment-root/my-deployment-group/<randomidentifier>-local/logs/scripts.log for more details` will be showed at console, then you check whats is going on with your deployment by running `cat /opt/codedeploy-agent/deployment-root/my-deployment-group/<randomidentifier>-local/logs/scripts.log`.
 
-> Note: Don't forget that **it's a regular EC 2 instance** running locally, so, you can install everything you need to reproduce your application up and working on AWS servers.
+> Note: Don't forget that **it's a regular EC2 instance** running locally, so, you can install everything you need to reproduce your application up and running in AWS Cloud environment.
