@@ -31,7 +31,7 @@ On top of it, we have all `AWS CodeDeploy` stuff installed to you playing with i
 
 ### Testing/Debugging your deployment
 
-Go to your **app root directory** _(at same level of your `appspec.yml` file)_, zip your app and copy the zip into the running container with `docker cp <yourapp>.zip awscodedeploy:/home`.
+Go to your **app root directory** _(at same level of your `appspec.yml` file)_, zip your app and copy the zip into the running container with `docker cp <yourapp>.zip awscodedeploy:/`.
 
 Now, **back to your running container** run `codedeploy-local --bundle-location <yourapp>.zip -t zip --deployment-group my-deployment-group`
 
